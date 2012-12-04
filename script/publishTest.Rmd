@@ -28,7 +28,7 @@ res2.pc <- princomp (t (res2))
 
 ### 主成分分析によるバイプロット
 ```{r echo = FALSE}
-pdf.options(family = "Japan1")
+pdf.options(family = "Japan1") # 必要な場合もあります
 ```
 ```{r plot}
 biplot (res2.pc)
