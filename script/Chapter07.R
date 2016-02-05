@@ -1,7 +1,7 @@
-# ‘æ7Í ‰ž—p“I‰ðÍ
+# ç¬¬7ç«  å¿œç”¨çš„è§£æž
 
 
-##7.1 ŽO‚ÂˆÈã‚Ì•½‹Ï’l‚Ì”äŠrF•ªŽU•ªÍ
+##7.1 ä¸‰ã¤ä»¥ä¸Šã®å¹³å‡å€¤ã®æ¯”è¼ƒï¼šåˆ†æ•£åˆ†æž
 
 PlantGrowth [c (1:3, 11:13, 21:23), ]
 
@@ -10,20 +10,20 @@ summary(PGaov)
 
 (PG2 <- unstack (PlantGrowth))
 
-(PG.M <- mean (PlantGrowth$weight)) # ‘S‘Ì•½‹Ï’l
+(PG.M <- mean (PlantGrowth$weight)) # å…¨ä½“å¹³å‡å€¤
 
 PG.S <- PG2 - PG.M
 sum (PG.S^2)
-PG.M2 <-  matrix (rep (mean (PG2), 10), byrow = T,
+PG.M2 <-  matrix (rep (colMeans (PG2), 10), byrow = T,
                   ncol = 3)
-PG.M2  # …€‚²‚Æ‚Ì•½‹Ï’l‚ðŠe—ñ 10 ŒÂ•À‚×‚½s—ñ
+PG.M2  # æ°´æº–ã”ã¨ã®å¹³å‡å€¤ã‚’å„åˆ— 10 å€‹ä¸¦ã¹ãŸè¡Œåˆ—
  ##       [,1]  [,2]  [,3]
  ## [1,] 5.032 4.661 5.526
  ## [2,] 5.032 4.661 5.526
  ## [3,] 5.032 4.661 5.526
- ##   DDD’†—ª
-PG.SM <- PG.M2 - PG.M # s—ñ‚Ì‘S¬•ª‚É‚Â‚¢‚Ä‘S‘Ì•½‹Ï’l‚ðˆø‚­
-sum (PG.SM^2)          # …€ŠÔ•½•û˜a
+ ##   ï¼Žï¼Žï¼Žä¸­ç•¥
+PG.SM <- PG.M2 - PG.M # è¡Œåˆ—ã®å…¨æˆåˆ†ã«ã¤ã„ã¦å…¨ä½“å¹³å‡å€¤ã‚’å¼•ã
+sum (PG.SM^2)          # æ°´æº–é–“å¹³æ–¹å’Œ
 
 PG.SM2 <- PG2 - PG.M2 		
 PG.SM2 
@@ -31,7 +31,7 @@ PG.SM2
 ## 1  -0.862  0.149  0.784
 ## 2   0.548 -0.491 -0.406
 ## 3   0.148 -0.251  0.014
-##    DDD’†—ª		
+##    ï¼Žï¼Žï¼Žä¸­ç•¥		
 sum (PG.SM2^2)                        #
 
 summary (PGaov)
@@ -39,17 +39,17 @@ summary (PGaov)
 1 - pf( 4.8461, 2, 27)
 
 
-###7.1.1  ‘½d”äŠr
+###7.1.1  å¤šé‡æ¯”è¼ƒ
 
 PG.aov <- aov (weight ~ group, data = PlantGrowth)  
-PG.Tukey <- TukeyHSD (PG.aov)  # Œ‹‰Ê‚É TukeyHSD ‚ð“K—p
+PG.Tukey <- TukeyHSD (PG.aov)  # çµæžœã« TukeyHSD ã‚’é©ç”¨
 
 plot (PG.Tukey)
 dev.off ()
 
 PG.Tukey
 
-###7.1.2   ŒðŒÝì—p
+###7.1.2   äº¤äº’ä½œç”¨
 with (ToothGrowth,  interaction.plot (dose, supp, len))
 dev.off ()
 
@@ -57,13 +57,13 @@ TG.aov <- aov (len ~ supp * dose, data = ToothGrowth)
 summary (TG.aov)
 
 
-##7.2  ‰ñ‹A•ªÍ
+##7.2  å›žå¸°åˆ†æž
 head (cars)
 cars$speed <- cars$speed * 1.6
 cars$dist <- cars$dist * 0.3
-head (cars) # –`“ª‚Ì6s‚ð•\Ž¦
+head (cars) # å†’é ­ã®6è¡Œã‚’è¡¨ç¤º
 
-plot (cars) # ƒvƒƒbƒg‚ðì¬
+plot (cars) # ãƒ—ãƒ­ãƒƒãƒˆã‚’ä½œæˆ
 dev.off ()
 
 cor (cars)
@@ -72,14 +72,14 @@ cars.lm <- lm(dist ~ speed, data = cars)
 summary(cars.lm)
 
 
-plot (cars) # ƒvƒƒbƒg‚ðì¬
+plot (cars) # ãƒ—ãƒ­ãƒƒãƒˆã‚’ä½œæˆ
 abline  (cars.lm)
 
 dev.off ()
 
 example (least.squares)
 
-###7.2.1 —\‘ª
+###7.2.1 äºˆæ¸¬
 
 cars.new <- data.frame (speed = c (33,34))
 cars.new
@@ -117,7 +117,7 @@ summary (cars.lm)
 # 
 cars$speed2 <- cars$speed^2 
 cars$dist <- cars$dist * 0.3
-head (cars) # –`“ª‚Ì6s‚ð•\Ž¦
+head (cars) # å†’é ­ã®6è¡Œã‚’è¡¨ç¤º
 
 cor (cars)
 
